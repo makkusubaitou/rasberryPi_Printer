@@ -11,21 +11,20 @@ Your Website → Cloudflare Tunnel → Raspberry Pi → Network Printer
 
 ## Quick Start
 
-### 1. Copy files to your Raspberry Pi
-
-```bash
-# From your computer, copy this folder to your Pi
-scp -r ./* pi@<your-pi-ip>:~/print-server-setup/
-```
-
-### 2. Run the setup script
+### 1. Clone the repo on your Raspberry Pi
 
 ```bash
 # SSH into your Pi
 ssh pi@<your-pi-ip>
 
-# Run setup
-cd ~/print-server-setup
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/rasberryPi_Printer.git
+cd rasberryPi_Printer
+```
+
+### 2. Run the setup script
+
+```bash
 chmod +x setup.sh
 ./setup.sh
 ```
