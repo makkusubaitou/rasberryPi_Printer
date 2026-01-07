@@ -23,8 +23,10 @@ class Config:
     
     # Additional print options (passed to lp -o)
     # Examples: 'fit-to-page', 'media=A4', 'orientation-requested=4'
+    # For borderless printing, use 'media=A4.Borderless' or 'media=Letter.Borderless'
     PRINT_OPTIONS = [
-        'fit-to-page',  # Scale image to fit the page
+        'fit-to-page',           # Scale image to fit the page
+        'media=A4.Borderless',   # Borderless A4 printing (change to Letter.Borderless for US)
     ]
     
     # Maximum copies allowed per request (prevent abuse)
