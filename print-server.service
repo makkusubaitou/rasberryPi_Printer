@@ -1,0 +1,23 @@
+[Unit]
+Description=Print Server - Receives print jobs via webhook
+After=network.target cups.service
+Wants=cups.service
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/print-server
+Environment="PATH=/home/pi/print-server/venv/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="PRINT_API_KEY=YOUR_API_KEY_HERE"
+ExecStart=/home/pi/print-server/venv/bin/gunicorn --bind 127.0.0.1:5000 --workers 2 print_server:app
+Restart=always
+RestartSec=5
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+
