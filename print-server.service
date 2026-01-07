@@ -10,7 +10,7 @@ Group=pi
 WorkingDirectory=/home/pi/print-server
 Environment="PATH=/home/pi/print-server/venv/bin:/usr/local/bin:/usr/bin:/bin"
 Environment="PRINT_API_KEY=YOUR_API_KEY_HERE"
-ExecStart=/home/pi/print-server/venv/bin/gunicorn --bind 127.0.0.1:5000 --workers 2 print_server:app
+ExecStart=/home/pi/print-server/venv/bin/gunicorn --bind 127.0.0.1:3000 --workers 2 print_server:app
 Restart=always
 RestartSec=5
 

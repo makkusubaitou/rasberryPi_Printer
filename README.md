@@ -73,7 +73,7 @@ credentials-file: /home/pi/.cloudflared/<TUNNEL_ID>.json
 
 ingress:
   - hostname: printer.yourdomain.com
-    service: http://localhost:5000
+    service: http://localhost:3000
   - service: http_status:404
 ```
 

@@ -99,7 +99,7 @@ Group=pi
 WorkingDirectory=$INSTALL_DIR
 Environment="PATH=$INSTALL_DIR/venv/bin:/usr/local/bin:/usr/bin:/bin"
 Environment="PRINT_API_KEY=$API_KEY"
-ExecStart=$INSTALL_DIR/venv/bin/gunicorn --bind 127.0.0.1:5000 --workers 2 print_server:app
+ExecStart=$INSTALL_DIR/venv/bin/gunicorn --bind 127.0.0.1:3000 --workers 2 print_server:app
 Restart=always
 RestartSec=5
 
@@ -173,7 +173,7 @@ echo "      sudo cloudflared service install"
 echo "      sudo systemctl start cloudflared"
 echo ""
 echo "3. TEST YOUR SETUP"
-echo "   curl -X GET http://localhost:5000/health"
+echo "   curl -X GET http://localhost:3000/health"
 echo ""
 echo "   Or from your website:"
 echo "   curl -X POST https://printer.yourdomain.com/print \\"

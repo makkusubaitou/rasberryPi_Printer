@@ -33,7 +33,7 @@ class Config:
     # ==========================================================================
     # SERVER SETTINGS
     # ==========================================================================
-    PORT = int(os.environ.get('PRINT_SERVER_PORT', 5000))
+    PORT = int(os.environ.get('PRINT_SERVER_PORT', 3000))
     DEBUG = os.environ.get('PRINT_SERVER_DEBUG', 'false').lower() == 'true'
     
     # ==========================================================================
