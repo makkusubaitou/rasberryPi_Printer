@@ -25,8 +25,11 @@ class Config:
     # Examples: 'fit-to-page', 'media=A4', 'orientation-requested=4'
     # For borderless printing, use 'media=A4.Borderless' or 'media=Letter.Borderless'
     PRINT_OPTIONS = [
-        'fit-to-page',           # Scale image to fit the page
-        'media=A4.Borderless',   # Borderless A4 printing (change to Letter.Borderless for US)
+        'fit-to-page',              # Scale image to fit the page
+        'media=A4.Borderless',      # Borderless A4 printing
+        'ColorModel=Gray',          # Print in grayscale (less ink than color)
+        'print-quality=3',          # Lower quality = less ink (3=draft, 4=normal, 5=high)
+        'MediaType=Plain',          # Plain paper uses less ink than photo paper mode
     ]
     
     # Maximum copies allowed per request (prevent abuse)
