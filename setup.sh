@@ -25,7 +25,12 @@ fi
 
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-INSTALL_DIR="/home/pi/print-server"
+
+# Detect current user (works with custom usernames, not just 'pi')
+CURRENT_USER="$USER"
+INSTALL_DIR="/home/$CURRENT_USER/print-server"
+
+echo "Installing for user: $CURRENT_USER"
 
 # =============================================================================
 # Step 1: System Dependencies
@@ -35,8 +40,8 @@ echo -e "${GREEN}[1/6] Installing system dependencies...${NC}"
 sudo apt update
 sudo apt install -y python3 python3-pip python3-venv cups
 
-# Add pi user to lpadmin group (for printer access)
-sudo usermod -a -G lpadmin pi
+# Add current user to lpadmin group (for printer access)
+sudo usermod -a -G lpadmin "$CURRENT_USER"
 
 # =============================================================================
 # Step 2: Create installation directory and copy files
@@ -94,8 +99,8 @@ Wants=cups.service
 
 [Service]
 Type=simple
-User=pi
-Group=pi
+User=$CURRENT_USER
+Group=$CURRENT_USER
 WorkingDirectory=$INSTALL_DIR
 Environment="PATH=$INSTALL_DIR/venv/bin:/usr/local/bin:/usr/bin:/bin"
 Environment="PRINT_API_KEY=$API_KEY"
@@ -161,7 +166,7 @@ echo "   d) Create tunnel config file:"
 echo "      mkdir -p ~/.cloudflared"
 echo "      cat > ~/.cloudflared/config.yml << 'TUNNELCFG'"
 echo "      tunnel: print-server"
-echo "      credentials-file: /home/pi/.cloudflared/<TUNNEL_ID>.json"
+echo "      credentials-file: /home/$CURRENT_USER/.cloudflared/<TUNNEL_ID>.json"
 echo "      ingress:"
 echo "        - hostname: printer.yourdomain.com"
 echo "          service: http://localhost:5000"
