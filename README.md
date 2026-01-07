@@ -18,7 +18,7 @@ Your Website → Cloudflare Tunnel → Raspberry Pi → Network Printer
 ssh pi@<your-pi-ip>
 
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/rasberryPi_Printer.git
+git clone https://github.com/makkusubaitou/rasberryPi_Printer.git
 cd rasberryPi_Printer
 ```
 
